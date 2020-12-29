@@ -309,5 +309,5 @@ def excel():
 
 
 if __name__ == '__main__':
-    # app.run(host = '0.0.0.0', port = 80) # 若要配置在服务器上
-    app.run()
+     app.run(host = '0.0.0.0', port = 5000) # 若要配置在服务器上
+#    app.run()
