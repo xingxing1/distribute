@@ -44,7 +44,7 @@ class ProduceApi(Resource):
             print("cost_time: ", time.time() - start_time)
         else:
             return ("查询参数有误！")
-        return ("剩余数量: {}".format(number).encode("utf-8"))
+        return ("residue: {}".format(number))
 
     def get(self):
         data = request.get_data().decode('utf-8')
