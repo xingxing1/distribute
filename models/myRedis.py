@@ -19,6 +19,7 @@ class MySql(object):
     def __init__(self):
         self.mysql = pymysql.connect("192.168.137.161", "root", "123456", "distribute")
         self.cursor = self.mysql.cursor()
+
     def _reCon(self):
         while True:
             try:
@@ -26,6 +27,7 @@ class MySql(object):
                 break
             except pymysql.err.OperationalError:
                 self.mysql.ping(reconnect=True)
+
     def execute(self, sql):
         self._reCon()
         try:
@@ -73,6 +75,8 @@ class MyRedis(object):
             self.release_lock("produce", identifier)
 
     def generate_redis_key(self, tableName, primary, value, field):
+        if isinstance(value, str):
+            value = str(value)
         return tableName + ":" + primary + ":" + value + ":" + field
 
     def get_key_by_kwargs(self, **kwargs):

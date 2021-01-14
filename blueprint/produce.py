@@ -41,10 +41,10 @@ class ProduceApi(Resource):
             # myRedis.set_by_count(keyRedis)
             # myRedis.release_lock("numberDecr", identifier)
             print("number:", number)
-            print("耗时: ", time.time() - start_time)
+            print("cost_time: ", time.time() - start_time)
         else:
             return ("查询参数有误！")
-        return ("剩余数量: {}".format(number))
+        return ("剩余数量: {}".format(number).encode("utf-8"))
 
     def get(self):
         data = request.get_data().decode('utf-8')
