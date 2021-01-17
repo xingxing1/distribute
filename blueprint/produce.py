@@ -24,14 +24,16 @@ class ProduceApi(Resource):
         start_time = time.time()
         # identifier = myRedis.acquire_lock("numberDecr")
         if proId and name:
-            number = myRedis.redis_conn.get(keyRedis)
-            if not number:
-                pro = db.session.query(Produce).filter(Produce.ID == proId).first()
-                if pro:
-                    number = pro.Number
-                    myRedis.redis_conn.set(keyRedis, str(number))
-                else:
-                    return {}
+            # number = myRedis.redis_conn.get(keyRedis)
+            # if not number:
+            pro = db.session.query(Produce).filter(Produce.ID == proId).first()
+            number = pro.Number
+                # if pro:
+                #     number = pro.Number
+                #     myRedis.redis_conn.set(keyRedis, str(number))
+                # else:
+                #     return {}
+
             # number = int(number) - 1
             # if not ("pro" in locals().keys()):
             #     pro = db.session.query(Produce).filter(Produce.ID == proId).first()
